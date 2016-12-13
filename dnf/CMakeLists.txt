@@ -5,6 +5,11 @@ glib_compile_resources (DNF_COMMAND_INSTALL plugins/install/dnf-command-install.
                         INTERNAL)
 list (APPEND DNF_COMMAND_INSTALL "plugins/install/dnf-command-install.c")
 
+glib_compile_resources (DNF_COMMAND_INSTALL plugins/reomve/dnf-command-reomve.gresource.xml
+                        C_PREFIX dnf_command_reomve
+                        INTERNAL)
+list (APPEND DNF_COMMAND_INSTALL "plugins/reomve/dnf-command-reomve.c")
+
 glib_compile_resources (DNF_COMMAND_UPDATE plugins/update/dnf-command-update.gresource.xml
                         C_PREFIX dnf_command_update
                         INTERNAL)
