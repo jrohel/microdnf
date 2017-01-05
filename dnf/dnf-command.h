@@ -20,6 +20,11 @@
 
 #include <glib-object.h>
 #include <libdnf/libdnf.h>
+#include <libpeas/peas.h>
+
+#ifdef PEAS_HACK
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasExtensionBase, g_object_unref)
+#endif
 
 G_BEGIN_DECLS
 

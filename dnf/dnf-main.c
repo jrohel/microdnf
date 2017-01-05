@@ -24,6 +24,11 @@
 #include <libdnf/libdnf.h>
 #include "dnf-command.h"
 
+#ifdef PEAS_HACK
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasEngine, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (PeasExtensionSet, g_object_unref)
+#endif
+
 static gboolean opt_yes = TRUE;
 static gboolean opt_nodocs = FALSE;
 
