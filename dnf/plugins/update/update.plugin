@@ -1,6 +1,6 @@
 [Plugin]
 Module = command_update
-Embedded = dnf_command_update_register_types
+Loader = c
 Name = update
 Description = Update packages
 Authors = Igor Gnatenko <ignatenko@redhat.com>

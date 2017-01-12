@@ -31,5 +31,4 @@ include_directories (${GLIB_INCLUDE_DIRS})
 include_directories (${GOBJECT_INCLUDE_DIRS})
 include_directories (${PEAS_INCLUDE_DIRS})
 include_directories (${LIBDNF_INCLUDE_DIRS})
-
 add_subdirectory (dnf)

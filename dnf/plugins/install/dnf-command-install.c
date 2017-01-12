@@ -100,7 +100,7 @@ dnf_command_install_class_finalize (DnfCommandInstallClass *klass)
 }
 
 G_MODULE_EXPORT void
-dnf_command_install_register_types (PeasObjectModule *module)
+peas_register_types (PeasObjectModule *module)
 {
   dnf_command_install_register_type (G_TYPE_MODULE (module));
 

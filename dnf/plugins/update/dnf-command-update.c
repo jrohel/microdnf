@@ -98,7 +98,7 @@ dnf_command_update_class_finalize (DnfCommandUpdateClass *klass)
 }
 
 G_MODULE_EXPORT void
-dnf_command_update_register_types (PeasObjectModule *module)
+peas_register_types (PeasObjectModule *module)
 {
   dnf_command_update_register_type (G_TYPE_MODULE (module));
 

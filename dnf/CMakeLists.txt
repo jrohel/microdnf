@@ -1,19 +1,7 @@
 set (DNF_SRCS dnf-command.c dnf-utils.c)
 
-glib_compile_resources (DNF_COMMAND_INSTALL plugins/install/dnf-command-install.gresource.xml
-                        C_PREFIX dnf_command_install
-                        INTERNAL)
-list (APPEND DNF_COMMAND_INSTALL "plugins/install/dnf-command-install.c")
-
-glib_compile_resources (DNF_COMMAND_UPDATE plugins/update/dnf-command-update.gresource.xml
-                        C_PREFIX dnf_command_update
-                        INTERNAL)
-list (APPEND DNF_COMMAND_UPDATE "plugins/update/dnf-command-update.c")
-
 include_directories (${CMAKE_CURRENT_SOURCE_DIR})
-add_executable (microdnf dnf-main.c ${DNF_SRCS}
-                ${DNF_COMMAND_INSTALL}
-                ${DNF_COMMAND_UPDATE})
+add_executable (microdnf dnf-main.c ${DNF_SRCS})
 target_link_libraries (microdnf
                        ${GLIB_LIBRARIES}
                        ${GOBJECT_LIBRARIES}
@@ -23,7 +11,14 @@ target_compile_definitions (microdnf
                             PRIVATE -DBUILDDIR="${CMAKE_CURRENT_BINARY_DIR}"
                             PRIVATE -DSRCDIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
+add_library (command_install SHARED plugins/install/dnf-command-install.c)
+add_library (command_update SHARED plugins/update/dnf-command-update.c)
+
 add_subdirectory (plugins)
 
 install (TARGETS microdnf
          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install (TARGETS command_install command_update
+         LIBRARY DESTINATION ${PKG_LIBDIR}/plugins)
+install (FILES plugins/install/install.plugin plugins/update/update.plugin
+         DESTINATION ${PKG_LIBDIR}/plugins)

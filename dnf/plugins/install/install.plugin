@@ -1,6 +1,6 @@
 [Plugin]
 Module = command_install
-Embedded = dnf_command_install_register_types
+Loader = c
 Name = install
 Description = Install packages
 Authors = Richard Hughes <richard@hughsie.com>, Colin Walters <walters@verbum.org>, Igor Gnatenko <ignatenko@redhat.com>
